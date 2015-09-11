@@ -10,9 +10,9 @@ using OrderSample.QueueClient;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-using Service.DataLayer;
-using Service.DataLayer.Entities;
 using Service.InternalContract;
+using Service.Processor.DataLayer;
+using Service.Processor.DataLayer.Entities;
 
 
 namespace Service.Processor

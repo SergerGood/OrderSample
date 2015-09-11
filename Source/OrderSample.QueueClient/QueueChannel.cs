@@ -25,13 +25,6 @@ namespace OrderSample.QueueClient
             connection?.Close();
         }
 
-
-        public IModel GetModel()
-        {
-            return model;
-        }
-
-
         public void Publish(byte[] message)
         {
             model.QueueDeclare(queueName, true, false, false, null);

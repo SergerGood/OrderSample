@@ -2,7 +2,7 @@
 
 using OrderSample.QueueClient;
 
-using Service.DataLayer;
+using Service.Processor.DataLayer;
 
 
 namespace Service.Processor

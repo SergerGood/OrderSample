@@ -32,12 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Nelibur.Sword, Version=3.0.3.223, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Nelibur.Sword.3.1.6\lib\net45\Nelibur.Sword.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.4.0.1.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.4.3.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
@@ -53,6 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLayer\Entities\Order.cs" />
+    <Compile Include="DataLayer\IOrderRepository.cs" />
+    <Compile Include="DataLayer\Maps\OrderMap.cs" />
+    <Compile Include="DataLayer\OrderRepository.cs" />
+    <Compile Include="DataLayer\SessionFactory.cs" />
     <Compile Include="OrderProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,10 +78,6 @@
     <ProjectReference Include="..\OrderSample.QueueClient\OrderSample.QueueClient.csproj">
       <Project>{6A306BAE-DC30-4647-AE1C-BDD54CD1BFC5}</Project>
       <Name>OrderSample.QueueClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Service.DataLayer\Service.DataLayer.csproj">
-      <Project>{C01B166F-EAF9-4AEC-A607-367A3A23BAE0}</Project>
-      <Name>Service.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service.InternalContract\Service.InternalContract.csproj">
       <Project>{46836CB5-E9DF-41F0-BE13-FD7CF425BB82}</Project>
