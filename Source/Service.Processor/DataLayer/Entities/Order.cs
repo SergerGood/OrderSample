@@ -8,5 +8,6 @@ namespace Service.Processor.DataLayer.Entities
         public virtual int Id { get; set; }
         public virtual Guid UserId { get; set; }
         public virtual string Text { get; set; }
+        public virtual Guid RequestId { get; set; }
     }
 }

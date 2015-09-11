@@ -8,6 +8,8 @@ namespace Service.Contracts.Requests
     public class CreateOrderRequest
     {
         [DataMember]
+        public Guid RequestId { get; set; }
+        [DataMember]
         public Guid UserId { get; set; }
 
         [DataMember]

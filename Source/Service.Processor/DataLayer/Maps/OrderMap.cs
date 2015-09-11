@@ -18,6 +18,7 @@ namespace Service.Processor.DataLayer.Maps
 
             Property(x => x.Text);
             Property(x => x.UserId);
+            Property(x => x.RequestId);
         }
     }
 }

@@ -75,7 +75,8 @@ namespace Service.Processor
             return new Order
             {
                 Text = queueItem.Text,
-                UserId = queueItem.UserId
+                UserId = queueItem.UserId,
+                RequestId = queueItem.RequestId
             };
         }
 
@@ -119,7 +120,8 @@ namespace Service.Processor
             return new MonitoringOrderQueueItem
             {
                 Text = order.Text,
-                UserId = order.UserId
+                UserId = order.UserId,
+                RequestId = order.RequestId
             };
         }
     }

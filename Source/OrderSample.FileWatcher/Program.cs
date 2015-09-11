@@ -45,7 +45,7 @@ namespace OrderSample.FileWatcher
         {
             string text = File.ReadAllText(e.FullPath);
 
-            var request = new CreateOrderRequest { Text = text, UserId = userId };
+            var request = new CreateOrderRequest { Text = text, UserId = userId, RequestId = Guid.NewGuid()};
             client.Post(request);
         }
     }

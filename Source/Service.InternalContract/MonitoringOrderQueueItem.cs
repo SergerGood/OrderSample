@@ -7,6 +7,7 @@ namespace Service.InternalContract
     {
         public Guid UserId { get; set; }
         public string Text { get; set; }
+        public Guid RequestId { get; set; }
 
         public override string ToString()
         {

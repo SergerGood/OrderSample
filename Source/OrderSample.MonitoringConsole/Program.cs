@@ -42,9 +42,9 @@ namespace OrderSample.MonitoringConsole
         }
 
 
-        private static MonitoringOrderQueueItem GetQueueItem(BasicDeliverEventArgs deliverEventArgs)
+        private static MonitoringOrderQueueItem GetQueueItem(BasicDeliverEventArgs args)
         {
-            return deliverEventArgs.Body
+            return args.Body
                 .ToOption()
                 .Map(Encoding.UTF8.GetString)
                 .Map(JsonConvert.DeserializeObject<MonitoringOrderQueueItem>)

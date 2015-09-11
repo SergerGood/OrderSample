@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Nelibur.ServiceModel.Clients;
+using Nelibur.Sword.Extensions;
 
 using OrderSample.Client.Properties;
 
@@ -24,8 +25,11 @@ namespace OrderSample.Client
             string line;
             while ((line = Console.ReadLine()) != null)
             {
-                var request = new CreateOrderRequest { Text = line, UserId = userId };
-                client.Post(request);
+                100.Times(x =>
+                {
+                    var request = new CreateOrderRequest { Text = line + x, UserId = userId , RequestId =  Guid.NewGuid()};
+                    client.Post(request);
+                });
             }
         }
     }

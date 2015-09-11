@@ -35,12 +35,13 @@ namespace Service.Endpoint.Commands
         }
 
 
-        private OrderQueueItem ToQueueItem(CreateOrderRequest createOrderRequest)
+        private OrderQueueItem ToQueueItem(CreateOrderRequest request)
         {
             return new OrderQueueItem
             {
-                Text = createOrderRequest.Text,
-                UserId = createOrderRequest.UserId
+                Text = request.Text,
+                UserId = request.UserId,
+                RequestId = request.RequestId
             };
         }
     }
