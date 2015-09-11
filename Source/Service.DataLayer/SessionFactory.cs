@@ -18,6 +18,14 @@ namespace Service.DataLayer
 
         public static void Create()
         {
+            var configuration = CreatConfiguration();
+
+            factory = configuration.BuildSessionFactory();
+        }
+
+
+        private static Configuration CreatConfiguration()
+        {
             ModelMapper mapper = GetMapper();
             HbmMapping mapping = mapper.CompileMappingForAllExplicitlyAddedEntities();
 
@@ -26,7 +34,7 @@ namespace Service.DataLayer
             configuration.SetProperty(Environment.ConnectionString, @"Data Source=.\sqlexpress;Initial Catalog=OrdersDatabase;Integrated Security=True");
             configuration.AddMapping(mapping);
 
-            factory = configuration.BuildSessionFactory();
+            return configuration;
         }
 
 
