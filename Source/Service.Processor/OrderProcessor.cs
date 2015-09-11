@@ -21,10 +21,10 @@ namespace Service.Processor
     {
         private readonly QueueChannel channel;
         private readonly QueueingBasicConsumer consumer;
-        private readonly IOrderRepository orderRepository;
+        private readonly OrderRepository orderRepository;
 
 
-        public OrderProcessor(QueueChannel channel, QueueingBasicConsumer consumer, IOrderRepository orderRepository)
+        public OrderProcessor(QueueChannel channel, QueueingBasicConsumer consumer, OrderRepository orderRepository)
         {
             this.channel = channel;
             this.consumer = consumer;

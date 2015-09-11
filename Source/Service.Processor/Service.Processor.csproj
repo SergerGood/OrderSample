@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer\Entities\Order.cs" />
-    <Compile Include="DataLayer\IOrderRepository.cs" />
     <Compile Include="DataLayer\Maps\OrderMap.cs" />
     <Compile Include="DataLayer\OrderRepository.cs" />
     <Compile Include="DataLayer\SessionFactory.cs" />

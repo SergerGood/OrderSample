@@ -5,6 +5,8 @@ using Nelibur.Sword.Extensions;
 
 using Newtonsoft.Json;
 
+using OrderSample.Logger.DataLayer;
+using OrderSample.Logger.DataLayer.Entities;
 using OrderSample.QueueClient;
 
 using RabbitMQ.Client;
@@ -17,6 +19,9 @@ namespace OrderSample.Logger
 {
     internal class Program
     {
+        private static readonly OrderRepository orderRepository = new OrderRepository();
+
+
         private static void Main(string[] args)
         {
             using (var channel = new QueueChannel("log queue"))
@@ -30,15 +35,35 @@ namespace OrderSample.Logger
             }
         }
 
+
         private static void RecieveOrderInfo(QueueingBasicConsumer consumer, QueueChannel channel)
         {
             BasicDeliverEventArgs deliverEventArgs = consumer.Queue.Dequeue();
 
-            var queueItem = GetQueueItem(deliverEventArgs);
+            LogOrderQueueItem queueItem = GetQueueItem(deliverEventArgs);
 
-
+            queueItem.ToOption()
+                .Map(CreateOrderEntitiy)
+                .Do(LogOrder);
 
             channel.Ack(deliverEventArgs.DeliveryTag);
+        }
+
+
+        private static void LogOrder(Order order)
+        {
+            orderRepository.Log(order);
+        }
+
+
+        private static Order CreateOrderEntitiy(LogOrderQueueItem queueItem)
+        {
+            return new Order
+            {
+                Text = queueItem.Text,
+                UserId = queueItem.UserId,
+                Id = Guid.NewGuid()
+            };
         }
 
 

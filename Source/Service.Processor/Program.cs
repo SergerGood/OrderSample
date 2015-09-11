@@ -12,7 +12,7 @@ namespace Service.Processor
         private static void Main(string[] args)
         {
             SessionFactory.Create();
-            IOrderRepository orderRepository = new OrderRepository();
+            OrderRepository orderRepository = new OrderRepository();
 
             using (var channel = new QueueChannel("request queue"))
             {

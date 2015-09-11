@@ -7,7 +7,7 @@ using Service.Processor.DataLayer.Entities;
 
 namespace Service.Processor.DataLayer
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository
     {
         public void Save(Order order)
         {
