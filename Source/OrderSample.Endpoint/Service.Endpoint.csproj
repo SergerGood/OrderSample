@@ -72,6 +72,10 @@
       <Project>{34C84E19-CCC0-413C-BAB7-D76E426A2B6C}</Project>
       <Name>Service.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OrderSample.QueueClient\OrderSample.QueueClient.csproj">
+      <Project>{6A306BAE-DC30-4647-AE1C-BDD54CD1BFC5}</Project>
+      <Name>OrderSample.QueueClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

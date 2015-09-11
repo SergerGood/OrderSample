@@ -6,7 +6,7 @@ using Nelibur.Sword.Extensions;
 
 using Newtonsoft.Json;
 
-using RabbitMQ.Client;
+using OrderSample.QueueClient;
 
 using Service.Contracts.Requests;
 
@@ -18,6 +18,7 @@ namespace Service.Endpoint.Commands
         public void PostOneWay(CreateOrderRequest request)
         {
             request.ToOption()
+                .Map(ToQueueItem)
                 .Map(JsonConvert.SerializeObject)
                 .Map(Encoding.UTF8.GetBytes)
                 .Do(PushRequest);
@@ -26,26 +27,20 @@ namespace Service.Endpoint.Commands
 
         private void PushRequest(byte[] message)
         {
-            var factory = new ConnectionFactory { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
+            using (var channel = new QueueChannel("request queue"))
             {
-                using (var model = connection.CreateModel())
-                {
-                    Publish(message, model);
-                }
+                channel.Publish(message);
             }
         }
 
 
-        private static void Publish(byte[] message, IModel model)
+        private RequestQueueItem ToQueueItem(CreateOrderRequest createOrderRequest)
         {
-            var requestName = "request queue";
-            model.QueueDeclare(requestName, true, false, false, null);
-
-            IBasicProperties properties = model.CreateBasicProperties();
-            properties.SetPersistent(true);
-
-            model.BasicPublish("", requestName, properties, message);
+            return new RequestQueueItem
+            {
+                Text = createOrderRequest.Text,
+                UserId = createOrderRequest.UserId
+            };
         }
     }
 }

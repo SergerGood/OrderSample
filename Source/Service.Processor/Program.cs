@@ -5,10 +5,10 @@ using Nelibur.Sword.Extensions;
 
 using Newtonsoft.Json;
 
+using OrderSample.QueueClient;
+
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-
-using Service.Contracts.Requests;
 
 
 namespace Service.Processor
@@ -17,34 +17,28 @@ namespace Service.Processor
     {
         private static void Main(string[] args)
         {
-            var factory = new ConnectionFactory { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
+            using (var channel = new QueueChannel("request queue"))
             {
-                using (var model = connection.CreateModel())
+                var consumer = channel.CreateConsumer();
+                while (true)
                 {
-                    var consumer = new QueueingBasicConsumer(model);
-                    model.BasicConsume("request queue", false, consumer);
-
-                    while (true)
-                    {
-                        ReceiveMessage(model, consumer);
-                    }
+                    ReceiveMessage(channel, consumer);
                 }
             }
         }
 
 
-        private static void ReceiveMessage(IModel model, QueueingBasicConsumer consumer)
+        private static void ReceiveMessage(QueueChannel channel, QueueingBasicConsumer consumer)
         {
             BasicDeliverEventArgs deliverEventArgs = consumer.Queue.Dequeue();
 
             var request = deliverEventArgs.Body
                 .ToOption()
                 .Map(Encoding.UTF8.GetString)
-                .Map(JsonConvert.DeserializeObject<CreateOrderRequest>)
+                .Map(JsonConvert.DeserializeObject<RequestQueueItem>)
                 .Value;
 
-            model.BasicAck(deliverEventArgs.DeliveryTag, false);
+            channel.Ack(deliverEventArgs.DeliveryTag);
         }
     }
 }
