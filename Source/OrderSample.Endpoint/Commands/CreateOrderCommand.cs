@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using OrderSample.QueueClient;
 
 using Service.Contracts.Requests;
+using Service.InternalContract;
 
 
 namespace Service.Endpoint.Commands
@@ -34,9 +35,9 @@ namespace Service.Endpoint.Commands
         }
 
 
-        private RequestQueueItem ToQueueItem(CreateOrderRequest createOrderRequest)
+        private OrderQueueItem ToQueueItem(CreateOrderRequest createOrderRequest)
         {
-            return new RequestQueueItem
+            return new OrderQueueItem
             {
                 Text = createOrderRequest.Text,
                 UserId = createOrderRequest.UserId

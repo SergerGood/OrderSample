@@ -1,9 +1,9 @@
 ﻿using System;
 
 
-namespace OrderSample.QueueClient
+namespace Service.InternalContract
 {
-    public sealed class RequestQueueItem
+    public sealed class OrderQueueItem
     {
         public Guid UserId { get; set; }
         public string Text { get; set; }

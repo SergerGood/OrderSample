@@ -10,13 +10,22 @@ using OrderSample.QueueClient;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
+using Service.DataLayer;
+using Service.DataLayer.Entities;
+using Service.InternalContract;
+
 
 namespace Service.Processor
 {
     internal class Program
     {
+        private static IOrderRepository orderRepository;
+
         private static void Main(string[] args)
         {
+            SessionFactory.Create();
+            orderRepository = new OrderRepository();
+
             using (var channel = new QueueChannel("request queue"))
             {
                 var consumer = channel.CreateConsumer();
@@ -32,13 +41,29 @@ namespace Service.Processor
         {
             BasicDeliverEventArgs deliverEventArgs = consumer.Queue.Dequeue();
 
-            var request = deliverEventArgs.Body
+            deliverEventArgs.Body
                 .ToOption()
                 .Map(Encoding.UTF8.GetString)
-                .Map(JsonConvert.DeserializeObject<RequestQueueItem>)
-                .Value;
+                .Map(JsonConvert.DeserializeObject<OrderQueueItem>)
+                .Map(ToEntity)
+                .Do(SaveItem);
 
             channel.Ack(deliverEventArgs.DeliveryTag);
+        }
+
+        private static Order ToEntity(OrderQueueItem queueItem)
+        {
+            return new Order
+            {
+                Text = queueItem.Text,
+                UserId = queueItem.UserId
+            };
+        }
+
+
+        private static void SaveItem(Order order)
+        {
+            orderRepository.Save(order);
         }
     }
 }
