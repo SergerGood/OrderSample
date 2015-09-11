@@ -17,6 +17,7 @@ namespace OrderSample.Client
 
             var client = new JsonServiceClient(Settings.Default.EndpointAddress);
 
+            Console.WriteLine("UserId: {0}", userId);
             Console.WriteLine("-> Waiting for create NewOrder. To exit press CTRL+C");
             Console.WriteLine("-> Enter text for create new order");
 
