@@ -25,7 +25,7 @@ namespace OrderSample.Client.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:9099/NeliburService")]
         public string EndpointAddress {
             get {
                 return ((string)(this["EndpointAddress"]));

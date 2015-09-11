@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="EndpointAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">http://localhost:9099/NeliburService</Value>
     </Setting>
   </Settings>
 </SettingsFile>
