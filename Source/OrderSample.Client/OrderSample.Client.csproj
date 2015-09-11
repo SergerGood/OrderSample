@@ -67,9 +67,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OrderSample.Contracts\OrderSample.Contracts.csproj">
+    <ProjectReference Include="..\OrderSample.Contracts\Service.Contracts.csproj">
       <Project>{34C84E19-CCC0-413C-BAB7-D76E426A2B6C}</Project>
-      <Name>OrderSample.Contracts</Name>
+      <Name>Service.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

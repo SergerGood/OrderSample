@@ -4,22 +4,28 @@ using System.ServiceModel.Web;
 using Nelibur.ServiceModel.Services;
 using Nelibur.ServiceModel.Services.Default;
 
-using OrderSample.Contracts.Requests;
-using OrderSample.Endpoint.Commands;
+using Service.Contracts.Requests;
+using Service.Endpoint.Commands;
 
 
-namespace OrderSample.Endpoint
+namespace Service.Endpoint
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
-            NeliburRestService.Configure(x => x.Bind<CreateOrderRequest, CreateOrderCommand>());
+            Configure();
 
             var service = new WebServiceHost(typeof(JsonServicePerCall));
             service.Open();
 
             Console.ReadLine();
+        }
+
+
+        private static void Configure()
+        {
+            NeliburRestService.Configure(x => x.Bind<CreateOrderRequest, CreateOrderCommand>());
         }
     }
 }

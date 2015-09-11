@@ -3,7 +3,8 @@
 using Nelibur.ServiceModel.Clients;
 
 using OrderSample.Client.Properties;
-using OrderSample.Contracts.Requests;
+
+using Service.Contracts.Requests;
 
 
 namespace OrderSample.Client

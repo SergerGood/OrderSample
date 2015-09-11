@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 
 
-namespace OrderSample.Contracts.Requests
+namespace Service.Contracts.Requests
 {
     [DataContract]
     public class CreateOrderRequest

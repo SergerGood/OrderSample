@@ -7,9 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderSample.Client", "Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderSample.FileWatcher", "Source\OrderSample.FileWatcher\OrderSample.FileWatcher.csproj", "{EBA2AD9F-57F3-4277-9D4F-9C1C0CEFE2A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderSample.Endpoint", "Source\OrderSample.Endpoint\OrderSample.Endpoint.csproj", "{72ADD7BB-B290-4331-82E4-6ECFCBCA1EA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Endpoint", "Source\OrderSample.Endpoint\Service.Endpoint.csproj", "{72ADD7BB-B290-4331-82E4-6ECFCBCA1EA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderSample.Contracts", "Source\OrderSample.Contracts\OrderSample.Contracts.csproj", "{34C84E19-CCC0-413C-BAB7-D76E426A2B6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Source\OrderSample.Contracts\Service.Contracts.csproj", "{34C84E19-CCC0-413C-BAB7-D76E426A2B6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{188B77E3-BBB3-4527-A713-DA9BB1B89555}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{D98C7971-F259-406C-A420-D29331F323A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +40,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5448EC4-12C3-4B9C-9150-99C96EF054D8} = {188B77E3-BBB3-4527-A713-DA9BB1B89555}
+		{EBA2AD9F-57F3-4277-9D4F-9C1C0CEFE2A3} = {188B77E3-BBB3-4527-A713-DA9BB1B89555}
+		{72ADD7BB-B290-4331-82E4-6ECFCBCA1EA6} = {D98C7971-F259-406C-A420-D29331F323A1}
+		{34C84E19-CCC0-413C-BAB7-D76E426A2B6C} = {D98C7971-F259-406C-A420-D29331F323A1}
 	EndGlobalSection
 EndGlobal

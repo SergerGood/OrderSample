@@ -7,8 +7,8 @@
     <ProjectGuid>{34C84E19-CCC0-413C-BAB7-D76E426A2B6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OrderSample.Contracts</RootNamespace>
-    <AssemblyName>OrderSample.Contracts</AssemblyName>
+    <RootNamespace>Service.Contracts</RootNamespace>
+    <AssemblyName>Service.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
